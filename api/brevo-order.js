@@ -11,8 +11,14 @@ export default async function handler(req, res) {
     body: JSON.stringify({
       email,
       updateEnabled: true,
-      listIds: [parseInt(process.env.BREVO_CUSTOMERS_LIST_ID)],
-      attributes: { FIRSTNAME: voornaam, LASTNAME: achternaam, ADRES: adres, PRODUCT: product, BEDRAG: prijs }
+      listIds: [parseInt(process.env.BREVO_LIST_ID)],
+      attributes: {
+        FIRSTNAME: voornaam,
+        LASTNAME: achternaam,
+        ADRES: adres,
+        PRODUCT: product,
+        BEDRAG: prijs
+      }
     })
   });
 
@@ -23,7 +29,13 @@ export default async function handler(req, res) {
     body: JSON.stringify({
       templateId: parseInt(process.env.BREVO_ORDER_TEMPLATE_ID),
       to: [{ email, name: voornaam + ' ' + achternaam }],
-      params: { VOORNAAM: voornaam, PRODUCT: product, BEDRAG: prijs, ADRES: adres, BETALING: betaling }
+      params: {
+        VOORNAAM: voornaam,
+        PRODUCT: product,
+        BEDRAG: prijs,
+        ADRES: adres,
+        BETALING: betaling
+      }
     })
   });
 
