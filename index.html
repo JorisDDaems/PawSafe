@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PawSafe — Noodpakket voor je hond</title>
+  <meta name="description" content="PawSafe verkoopt kant-en-klare noodpakketten voor huisdieren. Jij hebt een noodplan. Heeft je hond dat ook?" />
+  <meta property="og:title" content="PawSafe — Noodpakket voor je hond" />
+  <meta property="og:description" content="Kant-en-klare evacuatiekit voor je hond. Belgisch merk, snelle levering." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== CSS VARIABELEN (kleurenpallet) ===== */
+    :root {
+      --warm-brown:    #4A2C1A;
+      --amber:         #C97B3A;
+      --amber-light:   #E8A05A;
+      --cream:         #FAF6F0;
+      --cream-dark:    #F0E8DA;
+      --forest:        #2C4A2E;
+      --forest-light:  #3D6B40;
+      --charcoal:      #1E1E1E;
+      --text-body:     #3A2E25;
+      --text-muted:    #7A6A5A;
+      --white:         #FFFFFF;
+      --shadow-warm:   0 8px 40px rgba(74,44,26,0.12);
+      --shadow-card:   0 4px 24px rgba(74,44,26,0.10);
+      --radius:        16px;
+      --radius-sm:     10px;
+    }
+
+    /* ===== RESET & BASIS ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text-body);
+      line-height: 1.65;
+      font-size: 16px;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ===== NAVIGATIE ===== */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,246,240,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(74,44,26,0.10);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      padding: 0 20px;
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 900;
+      color: var(--warm-brown);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .nav-logo .paw { font-size: 1.3rem; }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a {
+      font-size: 0.92rem; font-weight: 500;
+      color: var(--text-body);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--amber); }
+    .nav-cta {
+      background: var(--amber);
+      color: var(--white) !important;
+      padding: 9px 20px;
+      border-radius: 50px;
+      font-weight: 600 !important;
+      transition: background .2s, transform .15s !important;
+    }
+    .nav-cta:hover { background: var(--amber-light) !important; transform: translateY(-1px); }
+    .nav-hamburger {
+      display: none;
+      background: none; border: none; cursor: pointer;
+      padding: 4px; color: var(--warm-brown); font-size: 1.5rem;
+    }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--cream);
+      border-bottom: 1px solid rgba(74,44,26,0.10);
+      padding: 16px 20px;
+      gap: 14px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 1rem; font-weight: 500;
+      padding: 8px 0; color: var(--text-body);
+      border-bottom: 1px solid rgba(74,44,26,0.06);
+    }
+
+    /* ===== CONTAINER ===== */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    .section { padding: 80px 0; }
+    .section-sm { padding: 48px 0; }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: var(--warm-brown);
+      position: relative; overflow: hidden;
+      padding: 90px 20px 80px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(201,123,58,0.25) 0%, transparent 60%),
+                  url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C97B3A' fill-opacity='0.08'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(201,123,58,0.20);
+      border: 1px solid rgba(201,123,58,0.35);
+      color: var(--amber-light);
+      font-size: 0.82rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 50px; margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 900; line-height: 1.12;
+      color: var(--white); margin-bottom: 22px;
+    }
+    .hero h1 span { color: var(--amber-light); }
+    .hero-sub {
+      color: rgba(255,255,255,0.75);
+      font-size: 1.1rem; margin-bottom: 36px;
+      max-width: 440px; line-height: 1.7;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--amber);
+      color: var(--white);
+      padding: 15px 30px; border-radius: 50px;
+      font-size: 1rem; font-weight: 600;
+      border: none; cursor: pointer;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      display: inline-flex; align-items: center; gap: 8px;
+      box-shadow: 0 4px 20px rgba(201,123,58,0.40);
+    }
+    .btn-primary:hover { background: var(--amber-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,123,58,0.50); }
+    .btn-secondary {
+      background: transparent;
+      color: rgba(255,255,255,0.85);
+      padding: 15px 28px; border-radius: 50px;
+      font-size: 1rem; font-weight: 500;
+      border: 1px solid rgba(255,255,255,0.25); cursor: pointer;
+      transition: background .2s, border-color .2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.45); }
+    .hero-visual {
+      display: flex; justify-content: center; align-items: center;
+    }
+    .hero-kit-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 24px; padding: 32px;
+      backdrop-filter: blur(10px);
+      text-align: center; width: 100%; max-width: 340px;
+      position: relative;
+    }
+    .hero-kit-emoji { font-size: 4.5rem; margin-bottom: 16px; display: block; }
+    .hero-kit-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--white); margin-bottom: 6px;
+    }
+    .hero-kit-price {
+      font-size: 1.9rem; font-weight: 700;
+      color: var(--amber-light);
+    }
+    .hero-kit-price span { font-size: 1rem; font-weight: 400; color: rgba(255,255,255,0.5); }
+    .hero-badge-flag {
+      position: absolute; top: -14px; right: 20px;
+      background: var(--forest-light);
+      color: var(--white); font-size: 0.75rem; font-weight: 700;
+      padding: 5px 14px; border-radius: 50px; letter-spacing: .04em;
+    }
+
+    /* ===== TRUST BAR ===== */
+    .trust-bar {
+      background: var(--cream-dark);
+      border-bottom: 1px solid rgba(74,44,26,0.08);
+      padding: 18px 0;
+    }
+    .trust-items {
+      display: flex; justify-content: center; flex-wrap: wrap;
+      gap: 32px; align-items: center;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.87rem; font-weight: 500; color: var(--text-muted);
+    }
+    .trust-item .icon { font-size: 1.2rem; }
+
+    /* ===== URGENCY BANNER ===== */
+    .urgency-banner {
+      background: linear-gradient(135deg, var(--forest), var(--forest-light));
+      color: var(--white);
+      text-align: center; padding: 13px 20px;
+      font-size: 0.9rem; font-weight: 600;
+      display: flex; justify-content: center; align-items: center; gap: 10px;
+    }
+    .urgency-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #6EE7A0;
+      animation: pulse-dot 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100% { opacity:1; transform: scale(1); }
+      50% { opacity:.5; transform: scale(1.4); }
+    }
+
+    /* ===== SECTIETITELS ===== */
+    .section-label {
+      display: inline-block;
+      font-size: 0.78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--amber); margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 900; line-height: 1.2;
+      color: var(--warm-brown); margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1.05rem; color: var(--text-muted);
+      max-width: 560px; line-height: 1.7;
+    }
+    .text-center { text-align: center; }
+    .text-center .section-sub { margin: 0 auto; }
+
+    /* ===== WAAROM PAWSAFE ===== */
+    .why-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px; margin-top: 48px;
+    }
+    .why-card {
+      background: var(--white);
+      border: 1px solid rgba(74,44,26,0.08);
+      border-radius: var(--radius); padding: 32px 28px;
+      transition: box-shadow .25s, transform .2s;
+    }
+    .why-card:hover { box-shadow: var(--shadow-card); transform: translateY(-4px); }
+    .why-icon { font-size: 2.2rem; margin-bottom: 16px; display: block; }
+    .why-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--warm-brown); margin-bottom: 10px;
+    }
+    .why-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* ===== PRODUCTEN ===== */
+    .products-section { background: var(--cream-dark); }
+    .products-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 28px; margin-top: 48px;
+    }
+    .product-card {
+      background: var(--white);
+      border-radius: 24px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      transition: border-color .25s, box-shadow .25s, transform .2s;
+      cursor: pointer;
+    }
+    .product-card:hover { box-shadow: var(--shadow-warm); transform: translateY(-4px); }
+    .product-card.flagship { border-color: var(--amber); }
+    .product-card-image {
+      background: var(--cream-dark);
+      display: flex; align-items: center; justify-content: center;
+      padding: 40px;
+      position: relative; min-height: 220px;
+    }
+    .product-card-emoji { font-size: 6rem; }
+    .product-badge {
+      position: absolute; top: 16px; right: 16px;
+      padding: 6px 14px; border-radius: 50px;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: .04em;
+    }
+    .badge-best { background: var(--amber); color: var(--white); }
+    .badge-starter { background: var(--forest); color: var(--white); }
+    .product-card-body { padding: 28px; }
+    .product-card-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem; font-weight: 900;
+      color: var(--warm-brown); margin-bottom: 6px;
+    }
+    .product-tagline { font-size: 0.92rem; color: var(--text-muted); margin-bottom: 16px; }
+    .product-price { font-size: 2rem; font-weight: 700; color: var(--amber); margin-bottom: 20px; }
+    .product-price small { font-size: 0.85rem; color: var(--text-muted); font-weight: 400; }
+    .product-features { margin-bottom: 24px; }
+    .product-features li {
+      font-size: 0.9rem; color: var(--text-body);
+      padding: 5px 0; display: flex; align-items: flex-start; gap: 8px;
+    }
+    .product-features li::before { content: '✓'; color: var(--forest-light); font-weight: 700; flex-shrink: 0; }
+    .btn-buy {
+      width: 100%; padding: 14px;
+      background: var(--amber); color: var(--white);
+      border: none; border-radius: 50px;
+      font-size: 1rem; font-weight: 600; cursor: pointer;
+      transition: background .2s, transform .15s;
+    }
+    .btn-buy:hover { background: var(--amber-light); transform: translateY(-1px); }
+    .btn-buy-outline {
+      width: 100%; padding: 14px;
+      background: transparent; color: var(--amber);
+      border: 2px solid var(--amber); border-radius: 50px;
+      font-size: 1rem; font-weight: 600; cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+    .btn-buy-outline:hover { background: var(--amber); color: var(--white); }
+
+    /* ===== EVACIUATIEKIT DETAIL ===== */
+    .kit-detail-section { background: var(--white); }
+    .kit-items-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px; margin-top: 40px;
+    }
+    .kit-item {
+      background: var(--cream);
+      border-radius: var(--radius-sm); padding: 20px 16px;
+      text-align: center;
+      border: 1px solid rgba(74,44,26,0.07);
+      transition: box-shadow .2s, transform .15s;
+    }
+    .kit-item:hover { box-shadow: var(--shadow-card); transform: translateY(-3px); }
+    .kit-item-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+    .kit-item-name { font-size: 0.84rem; font-weight: 600; color: var(--text-body); }
+
+    /* ===== VERGELIJKING ===== */
+    .compare-section { background: var(--cream-dark); }
+    .compare-table {
+      width: 100%; border-collapse: collapse; margin-top: 40px;
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+    .compare-table th, .compare-table td {
+      padding: 16px 20px; text-align: left;
+      border-bottom: 1px solid rgba(74,44,26,0.08);
+      font-size: 0.93rem;
+    }
+    .compare-table thead { background: var(--warm-brown); color: var(--white); }
+    .compare-table thead th { font-weight: 600; }
+    .compare-table thead th:nth-child(2),
+    .compare-table thead th:nth-child(3) { text-align: center; }
+    .compare-table tbody tr:nth-child(even) { background: rgba(74,44,26,0.03); }
+    .compare-table tbody tr:last-child td { border-bottom: none; }
+    .compare-table td:nth-child(2),
+    .compare-table td:nth-child(3) { text-align: center; font-size: 1.1rem; }
+    .col-flagship { background: rgba(201,123,58,0.07) !important; }
+    .compare-table tfoot { background: var(--cream-dark); }
+    .compare-table tfoot td {
+      font-weight: 700; font-size: 1rem;
+      border-top: 2px solid rgba(74,44,26,0.12);
+    }
+    .compare-table tfoot td:nth-child(3) { color: var(--amber); font-size: 1.2rem; }
+
+    /* ===== CHECKOUT SECTIE ===== */
+    .checkout-section {
+      background: linear-gradient(135deg, var(--warm-brown), #3A2010);
+      color: var(--white); text-align: center; padding: 80px 20px;
+      position: relative; overflow: hidden;
+    }
+    .checkout-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, rgba(201,123,58,0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .checkout-section .section-title { color: var(--white); }
+    .checkout-section .section-sub { color: rgba(255,255,255,0.70); margin: 0 auto 40px; }
+
+    /* Checkout formulier */
+    .checkout-form {
+      background: var(--white);
+      border-radius: 24px; padding: 40px;
+      max-width: 620px; margin: 0 auto;
+      text-align: left; position: relative; z-index: 1;
+    }
+    .form-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; font-weight: 900;
+      color: var(--warm-brown); margin-bottom: 24px;
+    }
+    .cart-summary {
+      background: var(--cream); border-radius: var(--radius-sm);
+      padding: 20px; margin-bottom: 24px;
+    }
+    .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; font-size: 0.93rem; }
+    .cart-total { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(74,44,26,0.12); padding-top: 12px; margin-top: 8px; font-weight: 700; font-size: 1.05rem; color: var(--warm-brown); }
+    .cart-total span:last-child { color: var(--amber); font-size: 1.2rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    .form-group { margin-bottom: 14px; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-body); margin-bottom: 6px; }
+    .form-group input, .form-group select {
+      width: 100%; padding: 12px 16px;
+      border: 1.5px solid rgba(74,44,26,0.18);
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem; font-family: inherit;
+      background: var(--white); color: var(--text-body);
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .form-group input:focus, .form-group select:focus {
+      outline: none; border-color: var(--amber);
+      box-shadow: 0 0 0 3px rgba(201,123,58,0.14);
+    }
+    .payment-methods { margin: 20px 0; }
+    .payment-methods-label { font-size: 0.85rem; font-weight: 600; color: var(--text-body); margin-bottom: 10px; }
+    .payment-options { display: flex; gap: 10px; flex-wrap: wrap; }
+    .payment-option {
+      flex: 1; min-width: 100px;
+      border: 2px solid rgba(74,44,26,0.15);
+      border-radius: var(--radius-sm); padding: 12px 10px;
+      text-align: center; cursor: pointer; transition: border-color .2s, background .2s;
+      background: var(--white);
+    }
+    .payment-option:hover { border-color: var(--amber); }
+    .payment-option.selected { border-color: var(--amber); background: rgba(201,123,58,0.06); }
+    .payment-option .pay-icon { font-size: 1.5rem; display: block; margin-bottom: 4px; }
+    .payment-option .pay-label { font-size: 0.75rem; font-weight: 600; color: var(--text-body); }
+    .legal-check { display: flex; align-items: flex-start; gap: 10px; margin: 18px 0; font-size: 0.83rem; color: var(--text-muted); }
+    .legal-check input { margin-top: 2px; accent-color: var(--amber); flex-shrink: 0; }
+    .legal-check a { color: var(--amber); text-decoration: underline; }
+    .btn-order {
+      width: 100%; padding: 16px;
+      background: var(--amber); color: var(--white);
+      border: none; border-radius: 50px;
+      font-size: 1.05rem; font-weight: 700; cursor: pointer;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      box-shadow: 0 4px 20px rgba(201,123,58,0.40);
+    }
+    .btn-order:hover { background: var(--amber-light); transform: translateY(-2px); }
+    .secure-note {
+      text-align: center; font-size: 0.8rem; color: var(--text-muted);
+      margin-top: 12px; display: flex; justify-content: center; align-items: center; gap: 6px;
+    }
+
+    /* ===== BEVESTIGING ===== */
+    .confirmation-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 999;
+      background: rgba(30,20,10,0.75); backdrop-filter: blur(6px);
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .confirmation-overlay.open { display: flex; }
+    .confirmation-box {
+      background: var(--white); border-radius: 24px;
+      padding: 48px 40px; max-width: 480px; width: 100%;
+      text-align: center;
+      animation: slide-in .35s cubic-bezier(.22,1,.36,1);
+    }
+    @keyframes slide-in {
+      from { opacity:0; transform: translateY(30px) scale(.95); }
+      to   { opacity:1; transform: translateY(0) scale(1); }
+    }
+    .conf-icon { font-size: 4rem; margin-bottom: 16px; display: block; }
+    .conf-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; font-weight: 900;
+      color: var(--warm-brown); margin-bottom: 12px;
+    }
+    .conf-text { font-size: 0.97rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 28px; }
+    .conf-close {
+      padding: 13px 32px; background: var(--amber); color: var(--white);
+      border: none; border-radius: 50px; font-size: 0.97rem; font-weight: 600;
+      cursor: pointer; transition: background .2s;
+    }
+    .conf-close:hover { background: var(--amber-light); }
+
+    /* ===== E-MAIL OPTIN ===== */
+    .optin-section { background: var(--forest); color: var(--white); }
+    .optin-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+      align-items: center;
+    }
+    .optin-section .section-title { color: var(--white); }
+    .optin-section .section-sub { color: rgba(255,255,255,0.70); }
+    .checklist-preview {
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius); padding: 28px;
+    }
+    .checklist-preview h4 {
+      font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: .06em;
+      color: rgba(255,255,255,0.5); margin-bottom: 16px;
+    }
+    .checklist-preview ul li {
+      padding: 8px 0; font-size: 0.93rem; color: rgba(255,255,255,0.85);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .checklist-preview ul li::before { content: '✓'; color: #6EE7A0; font-weight: 700; }
+    .optin-form-row { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
+    .optin-form-row input {
+      flex: 1; min-width: 200px; padding: 13px 18px;
+      border-radius: 50px; border: 1.5px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.10); color: var(--white);
+      font-size: 0.95rem; font-family: inherit;
+    }
+    .optin-form-row input::placeholder { color: rgba(255,255,255,0.5); }
+    .optin-form-row input:focus { outline: none; border-color: rgba(255,255,255,0.55); }
+    .btn-optin {
+      padding: 13px 24px; background: var(--amber);
+      color: var(--white); border: none; border-radius: 50px;
+      font-size: 0.95rem; font-weight: 600; cursor: pointer;
+      transition: background .2s;
+    }
+    .btn-optin:hover { background: var(--amber-light); }
+    .optin-disclaimer { font-size: 0.78rem; color: rgba(255,255,255,0.45); margin-top: 10px; }
+
+    /* ===== OVER PAWSAFE ===== */
+    .about-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+      align-items: center;
+    }
+    .about-visual {
+      background: var(--cream-dark); border-radius: 24px;
+      display: flex; align-items: center; justify-content: center;
+      min-height: 320px; font-size: 7rem;
+    }
+    .about-text p { color: var(--text-muted); line-height: 1.8; margin-bottom: 16px; }
+    .about-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .about-badge {
+      background: var(--cream-dark); border: 1px solid rgba(74,44,26,0.12);
+      border-radius: 50px; padding: 7px 16px;
+      font-size: 0.84rem; font-weight: 600; color: var(--text-body);
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    /* ===== FAQ ===== */
+    .faq-section { background: var(--cream-dark); }
+    .faq-list { max-width: 760px; margin: 40px auto 0; }
+    .faq-item {
+      background: var(--white); border-radius: var(--radius-sm);
+      margin-bottom: 12px; overflow: hidden;
+      border: 1px solid rgba(74,44,26,0.08);
+    }
+    .faq-question {
+      width: 100%; text-align: left; padding: 20px 24px;
+      background: none; border: none; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.97rem; font-weight: 600; color: var(--warm-brown);
+      font-family: inherit;
+    }
+    .faq-question .arrow { font-size: 1.2rem; transition: transform .25s; flex-shrink: 0; }
+    .faq-item.open .faq-question .arrow { transform: rotate(180deg); }
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height .35s ease, padding .3s;
+      padding: 0 24px;
+    }
+    .faq-item.open .faq-answer { max-height: 300px; padding-bottom: 20px; }
+    .faq-answer p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.75; }
+
+    /* ===== LEGALE PAGINA'S ===== */
+    .legal-section { display: none; background: var(--white); }
+    .legal-section.active { display: block; }
+    .legal-content { max-width: 800px; margin: 0 auto; padding: 60px 20px; }
+    .legal-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 900;
+      color: var(--warm-brown); margin-bottom: 8px;
+    }
+    .legal-content .updated { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 36px; }
+    .legal-content h2 { font-size: 1.15rem; font-weight: 700; color: var(--warm-brown); margin: 28px 0 10px; }
+    .legal-content p, .legal-content li { font-size: 0.93rem; color: var(--text-body); line-height: 1.8; margin-bottom: 10px; }
+    .legal-content ul { padding-left: 20px; list-style: disc; }
+    .legal-back {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--amber); font-weight: 600; font-size: 0.9rem;
+      margin-bottom: 32px; cursor: pointer;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--warm-brown); color: rgba(255,255,255,0.75);
+      padding: 50px 0 28px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      margin-bottom: 24px;
+    }
+    .footer-brand .nav-logo { font-size: 1.3rem; color: var(--white); margin-bottom: 14px; }
+    .footer-brand p { font-size: 0.88rem; line-height: 1.75; max-width: 280px; }
+    .footer-col h4 { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--white); margin-bottom: 14px; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { font-size: 0.88rem; transition: color .2s; cursor: pointer; }
+    .footer-col ul li a:hover { color: var(--amber-light); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+    }
+    .footer-bottom p { font-size: 0.82rem; }
+    .footer-payment-icons { display: flex; gap: 8px; font-size: 1.4rem; }
+
+    /* ===== COOKIE BANNER ===== */
+    .cookie-banner {
+      position: fixed; bottom: 20px; left: 20px; right: 20px; z-index: 999;
+      background: var(--warm-brown); color: var(--white);
+      border-radius: var(--radius); padding: 20px 24px;
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.30);
+      max-width: 780px; margin: 0 auto;
+      animation: slide-up .4s ease;
+    }
+    .cookie-banner.hidden { display: none; }
+    @keyframes slide-up {
+      from { opacity:0; transform:translateY(20px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    .cookie-text { flex: 1; font-size: 0.88rem; line-height: 1.6; }
+    .cookie-text a { color: var(--amber-light); text-decoration: underline; cursor: pointer; }
+    .cookie-actions { display: flex; gap: 10px; flex-shrink: 0; }
+    .btn-cookie-accept { padding: 10px 22px; background: var(--amber); color: var(--white); border: none; border-radius: 50px; font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: background .2s; }
+    .btn-cookie-accept:hover { background: var(--amber-light); }
+    .btn-cookie-refuse { padding: 10px 18px; background: transparent; color: rgba(255,255,255,0.65); border: 1px solid rgba(255,255,255,0.25); border-radius: 50px; font-size: 0.88rem; cursor: pointer; transition: border-color .2s; }
+    .btn-cookie-refuse:hover { border-color: rgba(255,255,255,0.55); }
+
+    /* ===== RESPONSIEF (mobiel) ===== */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: block; }
+      .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 36px; }
+      .hero-visual { order: -1; }
+      .hero-sub { margin: 0 auto 36px; }
+      .hero-actions { justify-content: center; }
+      .products-grid { grid-template-columns: 1fr; }
+      .optin-inner { grid-template-columns: 1fr; gap: 36px; }
+      .about-inner { grid-template-columns: 1fr; }
+      .about-visual { min-height: 200px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .checkout-form { padding: 24px; }
+      .form-row { grid-template-columns: 1fr; }
+      .trust-items { gap: 16px; }
+      .compare-table { font-size: 0.85rem; }
+      .compare-table th, .compare-table td { padding: 12px; }
+      .kit-items-grid { grid-template-columns: repeat(auto-fill, minmax(140px,1fr)); }
+    }
+    @media (max-width: 480px) {
+      .hero { padding: 60px 16px; }
+      .section { padding: 56px 0; }
+      .hero-kit-card { padding: 24px; }
+      .products-grid .product-card-body { padding: 20px; }
+      .cookie-actions { width: 100%; }
+      .btn-cookie-accept, .btn-cookie-refuse { flex: 1; text-align: center; }
+    }
+
+    /* ===== PAGINAOVERGANGEN ===== */
+    .main-site { transition: opacity .25s; }
+    .main-site.fading { opacity: 0; }
+  </style>
+</head>
+<body>
+
+<!-- ===== COOKIE BANNER ===== -->
+<div class="cookie-banner" id="cookieBanner">
+  <p class="cookie-text">
+    🍪 We gebruiken cookies voor een goede werking van de site en om je winkelwagen bij te houden. 
+    Lees ons <a onclick="showLegal('privacy')">privacybeleid</a>.
+  </p>
+  <div class="cookie-actions">
+    <button class="btn-cookie-refuse" onclick="closeCookies(false)">Weigeren</button>
+    <button class="btn-cookie-accept" onclick="closeCookies(true)">Accepteren</button>
+  </div>
+</div>
+
+<!-- ===== NAVIGATIE ===== -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a class="nav-logo" onclick="showHome()" style="cursor:pointer">
+      <span class="paw">🐾</span> PawSafe
+    </a>
+    <div class="nav-links">
+      <a onclick="scrollToSection('products')">Producten</a>
+      <a onclick="scrollToSection('why')">Waarom PawSafe</a>
+      <a onclick="scrollToSection('faq')">FAQ</a>
+      <a onclick="showLegal('about')">Over ons</a>
+      <a class="nav-cta" onclick="scrollToSection('checkout')">Bestel nu</a>
+    </div>
+    <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">☰</button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a onclick="scrollToSection('products'); closeMenu()">Producten</a>
+    <a onclick="scrollToSection('why'); closeMenu()">Waarom PawSafe</a>
+    <a onclick="scrollToSection('faq'); closeMenu()">FAQ</a>
+    <a onclick="showLegal('about'); closeMenu()">Over ons</a>
+    <a onclick="scrollToSection('checkout'); closeMenu()">🛒 Bestel nu</a>
+  </div>
+</nav>
+
+<!-- ===== HOOFDSITE ===== -->
+<div class="main-site" id="mainSite">
+
+  <!-- URGENTIE BANNER -->
+  <div class="urgency-banner">
+    <span class="urgency-dot"></span>
+    Beperkte voorraad beschikbaar — bestel vandaag, levering binnen 2–4 werkdagen
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-eyebrow">🇧🇪 Belgisch merk &nbsp;·&nbsp; Gratis verzending vanaf €75</div>
+        <h1>Jij hebt een noodplan.<br><span>Heeft je hond<br>dat ook?</span></h1>
+        <p class="hero-sub">
+          Bij brand, overstroming of noodverhuizing heb je geen tijd om te zoeken. 
+          PawSafe is een kant-en-klare evacuatiekit voor je huisdier — alles in één tas, klaar voor het ergste.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="scrollToSection('checkout')">
+            🛒 Bestel nu &nbsp;·&nbsp; Snel in huis
+          </button>
+          <button class="btn-secondary" onclick="scrollToSection('products')">
+            Bekijk de kits
+          </button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-kit-card">
+          <span class="hero-badge-flag">🇧🇪 Belgisch</span>
+          <span class="hero-kit-emoji">🎒🐕</span>
+          <div class="hero-kit-label">Evacuatiekit 72u</div>
+          <div class="hero-kit-price">€59,95 <span>incl. BTW</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-items">
+      <div class="trust-item"><span class="icon">🔒</span> Veilig betalen via Mollie</div>
+      <div class="trust-item"><span class="icon">🇧🇪</span> Belgisch merk</div>
+      <div class="trust-item"><span class="icon">📦</span> 2–4 werkdagen levering</div>
+      <div class="trust-item"><span class="icon">↩️</span> 14 dagen retour</div>
+      <div class="trust-item"><span class="icon">💳</span> Bancontact · iDEAL · Visa</div>
+    </div>
+  </div>
+
+  <!-- WAAROM PAWSAFE -->
+  <section class="section" id="why">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Waarom PawSafe?</span>
+        <h2 class="section-title">Wanneer het fout gaat,<br>telt elke seconde</h2>
+        <p class="section-sub">58% van de Belgische huishoudens heeft een huisdier. Maar wie denkt aan een noodplan voor Fido?</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <span class="why-icon">🚨</span>
+          <h3>Klaar in 10 seconden</h3>
+          <p>Geen zoeken, geen vergeten. Alles zit in één stevige tas. Grijp hem en ga — dat is het hele idee.</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">🏥</span>
+          <h3>Professionele EHBO-inhoud</h3>
+          <p>Van steriel gaas tot tekenhaak en oogwas. Samengesteld op basis van aanbevelingen van dierenartsen.</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">🇧🇪</span>
+          <h3>Gemaakt voor België</h3>
+          <p>Overstromingen, storm, stroomuitval — we weten wat er hier kan misgaan. PawSafe is daar op afgestemd.</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">💚</span>
+          <h3>Warm &amp; betrouwbaar</h3>
+          <p>Geen angstcommunicatie. Wij geloven dat voorbereiding rust brengt — voor jou én voor je hond.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTEN -->
+  <section class="section products-section" id="products">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Onze producten</span>
+        <h2 class="section-title">Kies de kit die bij jou past</h2>
+        <p class="section-sub">Beide kits zijn kant-en-klaar en meteen inzetbaar. Prijzen zijn inclusief BTW.</p>
+      </div>
+      <div class="products-grid">
+
+        <!-- BASIC KIT -->
+        <div class="product-card" onclick="selectProduct('basic')">
+          <div class="product-card-image">
+            <span class="product-card-emoji">🧰</span>
+            <span class="product-badge badge-starter">Starter</span>
+          </div>
+          <div class="product-card-body">
+            <h3>Basic Thuiskit</h3>
+            <p class="product-tagline">De essentials — ideaal als eerste stap</p>
+            <div class="product-price">€34,95 <small>incl. BTW</small></div>
+            <ul class="product-features">
+              <li>EHBO-kern (gaas, pleisters, doekjes)</li>
+              <li>Tekenhaak (professioneel)</li>
+              <li>Nooddeken (mylar)</li>
+              <li>Waterproof ID-kaarthouder</li>
+              <li>Stevige nylon draagtas</li>
+            </ul>
+            <button class="btn-buy-outline" onclick="event.stopPropagation(); selectProduct('basic'); scrollToSection('checkout')">
+              Voeg toe aan bestelling
+            </button>
+          </div>
+        </div>
+
+        <!-- EVACUATIEKIT -->
+        <div class="product-card flagship" onclick="selectProduct('flagship')">
+          <div class="product-card-image">
+            <span class="product-card-emoji">🎒</span>
+            <span class="product-badge badge-best">⭐ Meest gekozen</span>
+          </div>
+          <div class="product-card-body">
+            <h3>Evacuatiekit 72u</h3>
+            <p class="product-tagline">Alles voor 72 uur zelfstandig overleven</p>
+            <div class="product-price">€59,95 <small>incl. BTW</small></div>
+            <ul class="product-features">
+              <li>Volledige EHBO-set (18 items)</li>
+              <li>Opvouwbare drink- &amp; voerbak</li>
+              <li>Noodlijn + reflecterende halsband</li>
+              <li>Zachte muilkorf (veiligheid)</li>
+              <li>Beschrijfbare ID-tag metaal</li>
+              <li>Waterproof ID-kaarthouder</li>
+              <li>Stevige nylon tas</li>
+            </ul>
+            <button class="btn-buy" onclick="event.stopPropagation(); selectProduct('flagship'); scrollToSection('checkout')">
+              🛒 Bestel Evacuatiekit
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- KIT DETAIL — ALLE ITEMS -->
+  <section class="section kit-detail-section" id="kitDetail">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Wat zit er in?</span>
+        <h2 class="section-title">Evacuatiekit 72u — elk item zichtbaar</h2>
+        <p class="section-sub">18 items zorgvuldig geselecteerd. Niets overbodig, niets vergeten.</p>
+      </div>
+      <div class="kit-items-grid">
+        <div class="kit-item"><span class="kit-item-icon">🩹</span><span class="kit-item-name">Pet zelfklevende bandage (vet wrap)</span></div>
+        <div class="kit-item"><span class="kit-item-icon">🧻</span><span class="kit-item-name">Steriel gaas &amp; kompressen</span></div>
+        <div class="kit-item"><span class="kit-item-icon">🧴</span><span class="kit-item-name">Antiseptische doekjes</span></div>
+        <div class="kit-item"><span class="kit-item-icon">💧</span><span class="kit-item-name">Steriele oogwas (saline pods)</span></div>
+        <div class="kit-item"><span class="kit-item-icon">🩺</span><span class="kit-item-name">Medisch hechtpleister</span></div>
+        <div class="kit-item"><span class="kit-item-icon">✂️</span><span class="kit-item-name">Chirurgische schaar gebogen tip</span></div>
+        <div class="kit-item"><span class="kit-item-icon">🔬</span><span class="kit-item-name">Fijn pincet</span></div>
+        <div class="kit-item"><span class="kit-item-icon">🧤</span><span class="kit-item-name">Wegwerphandschoenen</span></div>
+        <div class="kit-item"><span class="kit-item-icon">🐛</span><span class="kit-item-name">Tekenhaak set (klein + groot)</span></div>
+        <div class="kit-item"><span class="kit-item-icon">🥣</span><span class="kit-item-name">Opvouwbare siliconen drinkbak</span></div>
+        <div class="kit-item"><span class="kit-item-icon">🍽️</span><span class="kit-item-name">Opvouwbare voerbak</span></div>
+        <div class="kit-item"><span class="kit-item-icon">🌡️</span><span class="kit-item-name">Nooddeken (mylar)</span></div>
+        <div class="kit-item"><span class="kit-item-icon">😷</span><span class="kit-item-name">Zachte verstelbare muilkorf</span></div>
+        <div class="kit-item"><span class="kit-item-icon">🔗</span><span class="kit-item-name">Noodlijn nylon 2m</span></div>
+        <div class="kit-item"><span class="kit-item-icon">✨</span><span class="kit-item-name">Reflecterende halsband verstelbaar</span></div>
+        <div class="kit-item"><span class="kit-item-icon">🪪</span><span class="kit-item-name">Waterproof ID-kaarthouder</span></div>
+        <div class="kit-item"><span class="kit-item-icon">🏷️</span><span class="kit-item-name">Beschrijfbare ID-tag metaal</span></div>
+        <div class="kit-item"><span class="kit-item-icon">🎒</span><span class="kit-item-name">Stevige nylon draagtas</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VERGELIJKINGSTABEL -->
+  <section class="section compare-section" id="compare">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Vergelijking</span>
+        <h2 class="section-title">Basic vs. Evacuatiekit</h2>
+        <p class="section-sub">Twijfel je? Hier is het overzicht naast elkaar.</p>
+      </div>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Inhoud</th>
+            <th>Basic Thuiskit<br><small>€34,95</small></th>
+            <th>Evacuatiekit 72u<br><small>€59,95</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>EHBO-kern (gaas, pleisters)</td><td>✅</td><td class="col-flagship">✅</td></tr>
+          <tr><td>Antiseptische doekjes</td><td>✅</td><td class="col-flagship">✅</td></tr>
+          <tr><td>Tekenhaak</td><td>✅</td><td class="col-flagship">✅ set klein + groot</td></tr>
+          <tr><td>Nooddeken (mylar)</td><td>✅</td><td class="col-flagship">✅</td></tr>
+          <tr><td>Waterproof ID-kaarthouder</td><td>✅</td><td class="col-flagship">✅</td></tr>
+          <tr><td>Steriele oogwas</td><td>❌</td><td class="col-flagship">✅</td></tr>
+          <tr><td>Chirurgische schaar + pincet</td><td>❌</td><td class="col-flagship">✅</td></tr>
+          <tr><td>Wegwerphandschoenen</td><td>❌</td><td class="col-flagship">✅</td></tr>
+          <tr><td>Opvouwbare drink- &amp; voerbak</td><td>❌</td><td class="col-flagship">✅</td></tr>
+          <tr><td>Zachte muilkorf</td><td>❌</td><td class="col-flagship">✅</td></tr>
+          <tr><td>Noodlijn 2m + halsband</td><td>❌</td><td class="col-flagship">✅</td></tr>
+          <tr><td>ID-tag metaal beschrijfbaar</td><td>❌</td><td class="col-flagship">✅</td></tr>
+          <tr><td>Stevige nylon tas</td><td>✅</td><td class="col-flagship">✅ (groter)</td></tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>Prijs (incl. BTW)</td>
+            <td>€34,95</td>
+            <td class="col-flagship">€59,95</td>
+          </tr>
+        </tfoot>
+      </table>
+      <div style="text-align:center; margin-top:28px;">
+        <button class="btn-primary" onclick="selectProduct('flagship'); scrollToSection('checkout')">
+          🎒 Kies Evacuatiekit — meest gekozen
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHECKOUT -->
+  <section class="checkout-section" id="checkout">
+    <span class="section-label" style="color: var(--amber-light);">Veilig bestellen</span>
+    <h2 class="section-title" style="margin-bottom:12px;">Jouw bestelling</h2>
+    <p class="section-sub">Betaal veilig via Bancontact, iDEAL of Visa/Mastercard. Levering in 2–4 werkdagen.</p>
+
+    <div class="checkout-form" id="checkoutForm">
+      <div class="form-title">📦 Bestelgegevens</div>
+
+      <!-- Productkeuze -->
+      <div class="cart-summary" id="cartSummary">
+        <div class="cart-item" id="cartItem">
+          <span>🎒 Evacuatiekit 72u</span>
+          <span>€59,95</span>
+        </div>
+        <div id="upsellRow" style="display:none; background: rgba(201,123,58,0.08); border-radius: 8px; padding: 10px; margin-top:8px;">
+          <div class="cart-item" style="font-size:0.85rem; color: var(--amber);">
+            <span>⬆️ <strong>Upgrade tip:</strong> voor €25 meer heb je de volledige Evacuatiekit 72u</span>
+            <button onclick="selectProduct('flagship')" style="background:var(--amber);color:#fff;border:none;border-radius:50px;padding:4px 12px;font-size:0.78rem;cursor:pointer;white-space:nowrap;">Upgrade</button>
+          </div>
+        </div>
+        <div class="cart-total">
+          <span>Totaal incl. BTW</span>
+          <span id="cartTotal">€59,95</span>
+        </div>
+      </div>
+
+      <!-- Adresgegevens -->
+      <div class="form-row">
+        <div class="form-group">
+          <label>Voornaam *</label>
+          <input type="text" id="firstName" placeholder="Jan" />
+        </div>
+        <div class="form-group">
+          <label>Achternaam *</label>
+          <input type="text" id="lastName" placeholder="Janssen" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>E-mailadres *</label>
+        <input type="email" id="email" placeholder="jan@voorbeeld.be" />
+      </div>
+      <div class="form-group">
+        <label>Straat en huisnummer *</label>
+        <input type="text" id="street" placeholder="Kerkstraat 12" />
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Postcode *</label>
+          <input type="text" id="zip" placeholder="9000" maxlength="4" />
+        </div>
+        <div class="form-group">
+          <label>Gemeente *</label>
+          <input type="text" id="city" placeholder="Gent" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Land</label>
+        <select id="country">
+          <option value="BE" selected>🇧🇪 België</option>
+          <option value="NL">🇳🇱 Nederland</option>
+        </select>
+      </div>
+
+      <!-- Betaalmethode -->
+      <div class="payment-methods">
+        <div class="payment-methods-label">Betaalmethode *</div>
+        <div class="payment-options">
+          <div class="payment-option selected" onclick="selectPayment(this, 'bancontact')">
+            <span class="pay-icon">💳</span>
+            <span class="pay-label">Bancontact</span>
+          </div>
+          <div class="payment-option" onclick="selectPayment(this, 'ideal')">
+            <span class="pay-icon">🏦</span>
+            <span class="pay-label">iDEAL</span>
+          </div>
+          <div class="payment-option" onclick="selectPayment(this, 'visa')">
+            <span class="pay-icon">💰</span>
+            <span class="pay-label">Visa / MC</span>
+          </div>
+          <div class="payment-option" onclick="selectPayment(this, 'paypal')">
+            <span class="pay-icon">🅿️</span>
+            <span class="pay-label">PayPal</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wettelijke akkoorden -->
+      <label class="legal-check">
+        <input type="checkbox" id="checkTerms" />
+        Ik ga akkoord met de <a onclick="showLegal('terms')">algemene voorwaarden</a> en het <a onclick="showLegal('withdrawal')">herroepingsrecht</a>. *
+      </label>
+      <label class="legal-check">
+        <input type="checkbox" id="checkPrivacy" />
+        Ik heb het <a onclick="showLegal('privacy')">privacybeleid</a> gelezen en ga hiermee akkoord. *
+      </label>
+
+      <button class="btn-order" onclick="placeOrder()">
+        🔒 Bestelling bevestigen &amp; betalen
+      </button>
+      <p class="secure-note">🔒 Beveiligde betaling via Mollie &nbsp;·&nbsp; SSL-versleuteld</p>
+    </div>
+  </section>
+
+  <!-- E-MAIL OPTIN -->
+  <section class="section optin-section" id="optin">
+    <div class="container">
+      <div class="optin-inner">
+        <div class="optin-text">
+          <span class="section-label" style="color: rgba(255,255,255,0.5);">Gratis checklist</span>
+          <h2 class="section-title">Ontvang onze gratis checklist noodplan voor je hond</h2>
+          <p class="section-sub">Wat moet je meenemen? Welke documenten? Medicatie? Wij stuurden het op — meteen in je mailbox.</p>
+          <div class="optin-form-row">
+            <input type="email" id="optinEmail" placeholder="jouw@email.be" />
+            <button class="btn-optin" onclick="submitOptin()">Stuur mij de checklist</button>
+          </div>
+          <p class="optin-disclaimer">✓ Geen spam. Maximaal 1 mail per maand. Uitschrijven kan altijd.</p>
+        </div>
+        <div class="checklist-preview">
+          <h4>Wat staat er in de checklist?</h4>
+          <ul>
+            <li>Belangrijkste items voor je hond bij evacuatie</li>
+            <li>Welke documenten je nodig hebt</li>
+            <li>Hoe je je hond kalm houdt in paniek</li>
+            <li>Contactgegevens nooddierenarts</li>
+            <li>Template noodplan (invulbaar)</li>
+            <li>Handige QR-code voor je halsband</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OVER PAWSAFE -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-visual">🐾</div>
+        <div class="about-text">
+          <span class="section-label">Over PawSafe</span>
+          <h2 class="section-title">Een Belgisch merk, gebouwd met zorg</h2>
+          <p>PawSafe is een Belgisch merk dat noodpakketten maakt voor huisdieren. We geloven dat elke hondeneigenaar een noodplan klaar zou moeten hebben — maar dat dat niet ingewikkeld hoeft te zijn.</p>
+          <p>Onze kits zijn samengesteld op basis van aanbevelingen van dierenartsen en Belgische civiele bescherming. Alles wat je nodig hebt zit in één tas. Niets meer, niets minder.</p>
+          <p>We zijn een klein bedrijf met een grote missie: ervoor zorgen dat geen enkel huisdier in de steek wordt gelaten in een noodsituatie.</p>
+          <div class="about-badges">
+            <span class="about-badge">🇧🇪 Belgisch merk</span>
+            <span class="about-badge">📦 Snelle levering</span>
+            <span class="about-badge">🔒 Veilig betalen</span>
+            <span class="about-badge">💚 Gemaakt met zorg</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq-section" id="faq">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Veelgestelde vragen</span>
+        <h2 class="section-title">FAQ</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Hoe snel wordt mijn bestelling geleverd? <span class="arrow">▾</span>
+          </button>
+          <div class="faq-answer"><p>We leveren via bpost of DPD. Normale levertijd is 2 tot 4 werkdagen na ontvangst van je betaling. Je ontvangt een bevestigingsmail met track-and-trace zodra je pakket onderweg is.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Wat zit er precies in de Evacuatiekit 72u? <span class="arrow">▾</span>
+          </button>
+          <div class="faq-answer"><p>De Evacuatiekit bevat 18 items: EHBO-kern (gaas, pleisters, antiseptische doekjes, oogwas, hechtpleister), chirurgische schaar, pincet, handschoenen, tekenhaak set, opvouwbare drink- en voerbak, nooddeken, muilkorf, noodlijn, reflecterende halsband, ID-kaarthouder, ID-tag en een stevige nylon tas. Zie de volledige lijst hierboven op de pagina.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Kan ik mijn bestelling terugsturen? <span class="arrow">▾</span>
+          </button>
+          <div class="faq-answer"><p>Ja. Je hebt wettelijk 14 dagen herroepingsrecht vanaf de dag van ontvangst. De producten moeten ongebruikt en in originele verpakking zijn. Neem contact met ons op via e-mail en we regelen de terugbetaling zodra we het pakket ontvangen hebben.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Zijn de prijzen inclusief BTW? <span class="arrow">▾</span>
+          </button>
+          <div class="faq-answer"><p>Ja, alle prijzen op onze website zijn inclusief BTW. Er komen geen verborgen kosten bij. Verzending is gratis bij bestellingen vanaf €75.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Leveren jullie ook in Nederland? <span class="arrow">▾</span>
+          </button>
+          <div class="faq-answer"><p>Momenteel leveren we vooral in België. Nederland wordt binnenkort toegevoegd als standaardoptie. Neem contact op als je een bestelling wil plaatsen vanuit Nederland — we zoeken een oplossing.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Werkt de kit ook voor katten? <span class="arrow">▾</span>
+          </button>
+          <div class="faq-answer"><p>De basis EHBO-items zijn universeel voor honden én katten. Een specifieke kattenvariant (met o.a. reismand-adapter) staat gepland voor fase 2. Schrijf je in op onze mailinglijst om als eerste te horen wanneer die beschikbaar is.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Hoe kan ik betalen? <span class="arrow">▾</span>
+          </button>
+          <div class="faq-answer"><p>We accepteren Bancontact (standaard voor België), iDEAL, Visa, Mastercard en PayPal. Alle betalingen verlopen veilig via Mollie, een gerenommeerde Europese betalingsprovider.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo">🐾 PawSafe</div>
+          <p>Kant-en-klare noodpakketten voor huisdieren. Belgisch merk. Gemaakt met zorg voor jou en je hond.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigatie</h4>
+          <ul>
+            <li><a onclick="scrollToSection('products')">Producten</a></li>
+            <li><a onclick="scrollToSection('why')">Waarom PawSafe</a></li>
+            <li><a onclick="scrollToSection('faq')">FAQ</a></li>
+            <li><a onclick="scrollToSection('about')">Over ons</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Juridisch</h4>
+          <ul>
+            <li><a onclick="showLegal('privacy')">Privacybeleid</a></li>
+            <li><a onclick="showLegal('terms')">Algemene voorwaarden</a></li>
+            <li><a onclick="showLegal('withdrawal')">Herroepingsrecht</a></li>
+            <li><a onclick="showLegal('impressum')">Impressum</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 PawSafe · Alle prijzen incl. BTW · Belgisch merk</p>
+        <div class="footer-payment-icons" title="Betaalmethoden">💳🏦💰🅿️</div>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /main-site -->
+
+<!-- ===== LEGALE PAGINA'S ===== -->
+
+<!-- PRIVACY -->
+<div class="legal-section" id="legalPrivacy">
+  <div class="legal-content">
+    <p class="legal-back" onclick="showHome()">← Terug naar PawSafe</p>
+    <h1>Privacybeleid</h1>
+    <p class="updated">Laatste update: januari 2025</p>
+    <h2>1. Wie zijn wij?</h2>
+    <p>PawSafe is een Belgisch e-commercebedrijf dat noodpakketten verkoopt voor huisdieren. Contacteer ons via: <strong>[JOUW E-MAIL]</strong>.</p>
+    <h2>2. Welke gegevens verwerken we?</h2>
+    <p>We verwerken: naam, e-mailadres, leveringsadres en betaalgegevens (verwerkt door Mollie — wij slaan nooit betaalkaartgegevens op).</p>
+    <h2>3. Waarvoor gebruiken we uw gegevens?</h2>
+    <ul>
+      <li>Verwerking en levering van uw bestelling</li>
+      <li>Orderbevestiging per e-mail (via Brevo)</li>
+      <li>Wettelijke verplichtingen (o.a. boekhoudkundige bewaarplicht)</li>
+      <li>Nieuwsbrief — alleen indien u hiervoor toestemming gaf</li>
+    </ul>
+    <h2>4. Hoe lang bewaren we uw gegevens?</h2>
+    <p>Bestelgegevens bewaren we 7 jaar (wettelijke boekhoudplicht). Nieuwsbriefinschrijvingen worden verwijderd zodra u zich uitschrijft.</p>
+    <h2>5. Uw rechten (AVG/GDPR)</h2>
+    <p>U heeft het recht op inzage, correctie, verwijdering, bezwaar en overdraagbaarheid van uw gegevens. Contacteer ons via e-mail. U kunt ook klacht indienen bij de GBA (Gegevensbeschermingsautoriteit): <strong>www.gegevensbeschermingsautoriteit.be</strong>.</p>
+    <h2>6. Cookies</h2>
+    <p>We gebruiken functionele cookies voor de winkelwagen en analytische cookies om het gebruik van de site te begrijpen. U kunt cookies weigeren via de cookiebanner.</p>
+  </div>
+</div>
+
+<!-- ALGEMENE VOORWAARDEN -->
+<div class="legal-section" id="legalTerms">
+  <div class="legal-content">
+    <p class="legal-back" onclick="showHome()">← Terug naar PawSafe</p>
+    <h1>Algemene Voorwaarden</h1>
+    <p class="updated">Laatste update: januari 2025</p>
+    <h2>1. Identiteit verkoper</h2>
+    <p>PawSafe · <strong>[JOUW NAAM / HANDELSNAAM]</strong> · <strong>[ADRES]</strong> · BTW: <strong>[BTW-NR OF VRIJSTELLINGSREGELING]</strong> · E-mail: <strong>[JOUW E-MAIL]</strong></p>
+    <h2>2. Toepasselijkheid</h2>
+    <p>Deze voorwaarden zijn van toepassing op alle bestellingen geplaatst via pawsafe.be. Door een bestelling te plaatsen gaat u akkoord met deze voorwaarden.</p>
+    <h2>3. Aanbod en prijs</h2>
+    <p>Alle prijzen zijn vermeld in euro, inclusief BTW. Eventuele verzendkosten worden duidelijk vermeld voor afronding van de bestelling. Levering is gratis vanaf €75.</p>
+    <h2>4. Bestelling en betaling</h2>
+    <p>Een overeenkomst komt tot stand na ontvangst van uw betaling en bevestiging per e-mail. Betaling verloopt via Mollie (Bancontact, iDEAL, Visa/Mastercard, PayPal).</p>
+    <h2>5. Levering</h2>
+    <p>Leveringstermijn: 2–4 werkdagen na ontvangst betaling, via bpost of DPD. Risico gaat over op de koper bij aflevering.</p>
+    <h2>6. Herroepingsrecht</h2>
+    <p>U heeft 14 dagen bedenktijd na ontvangst om de aankoop te annuleren, zonder opgave van reden. Zie ons uitgebreid <span onclick="showLegal('withdrawal')" style="color:var(--amber);cursor:pointer;text-decoration:underline;">herroepingsbeleid</span>.</p>
+    <h2>7. Klachten</h2>
+    <p>Bij klachten kunt u ons contacteren via e-mail. We streven ernaar uw klacht binnen 5 werkdagen te behandelen. U kunt ook terecht bij het Online Dispute Resolution platform: <strong>ec.europa.eu/consumers/odr</strong>.</p>
+    <h2>8. Toepasselijk recht</h2>
+    <p>Het Belgisch recht is van toepassing. Bij geschillen zijn de rechtbanken van <strong>[UW GERECHTELIJK ARRONDISSEMENT]</strong> bevoegd.</p>
+  </div>
+</div>
+
+<!-- HERROEPINGSRECHT -->
+<div class="legal-section" id="legalWithdrawal">
+  <div class="legal-content">
+    <p class="legal-back" onclick="showHome()">← Terug naar PawSafe</p>
+    <h1>Herroepingsrecht &amp; Retourbeleid</h1>
+    <p class="updated">Laatste update: januari 2025</p>
+    <h2>Uw recht op herroeping</h2>
+    <p>Als consument heeft u het recht om deze overeenkomst binnen <strong>14 dagen</strong> te herroepen, zonder opgave van reden.</p>
+    <p>De herroepingstermijn verstrijkt 14 dagen na de dag waarop u of een door u aangewezen derde het goed fysiek in bezit neemt.</p>
+    <h2>Hoe herroepen?</h2>
+    <p>Stuur een ondubbelzinnige verklaring per e-mail naar <strong>[JOUW E-MAIL]</strong> vóór het verstrijken van de 14 dagen. U kunt het onderstaande modelformulier gebruiken.</p>
+    <h2>Modelformulier herroeping</h2>
+    <p style="background:var(--cream-dark); padding:16px; border-radius:10px; font-size:0.9rem;">
+      Aan PawSafe, [JOUW E-MAIL]:<br><br>
+      Ik/Wij (*) deel/delen (*) u hierbij mede dat ik/wij (*) onze overeenkomst betreffende de verkoop van de volgende goederen (*)/levering van de volgende dienst (*) herroep/herroepen (*):<br><br>
+      Besteld op (*)/Ontvangen op (*):<br>
+      Naam/namen consument(en):<br>
+      Adres consument(en):<br>
+      Handtekening (alleen op papier):<br>
+      Datum:<br><br>
+      (*) Doorhalen wat niet van toepassing is.
+    </p>
+    <h2>Terugbetaling</h2>
+    <p>We betalen u terug binnen 14 dagen na ontvangst van de herroeping, via hetzelfde betaalmiddel waarmee u betaalde. We mogen wachten tot we de goederen teruggekregen hebben.</p>
+    <h2>Retourkosten</h2>
+    <p>Retourkosten zijn voor rekening van de koper. Stuur het product ongebruikt en in originele verpakking terug.</p>
+  </div>
+</div>
+
+<!-- IMPRESSUM -->
+<div class="legal-section" id="legalImpressum">
+  <div class="legal-content">
+    <p class="legal-back" onclick="showHome()">← Terug naar PawSafe</p>
+    <h1>Impressum</h1>
+    <p class="updated">Wettelijk verplichte vermeldingen (art. VI.45 WER)</p>
+    <h2>Verantwoordelijke uitgever</h2>
+    <p><strong>[JOUW NAAM]</strong><br>
+    Handelsnaam: PawSafe<br>
+    Adres: <strong>[JOUW ADRES, POSTCODE, GEMEENTE]</strong><br>
+    E-mail: <strong>[JOUW E-MAIL]</strong><br>
+    BTW-nummer: <strong>[BTW-NR of "Vrijstellingsregeling kleine onderneming, art. 56bis WBTW"]</strong><br>
+    KBO-nummer: <strong>[UW KBO-NUMMER]</strong></p>
+    <h2>Hosting</h2>
+    <p>Deze website wordt gehost door Vercel Inc., 340 Pine Street, Suite 701, San Francisco, CA 94104, USA.</p>
+    <h2>Intellectuele eigendom</h2>
+    <p>Alle teksten, afbeeldingen en content op deze website zijn eigendom van PawSafe tenzij anders vermeld. Niets mag worden overgenomen zonder schriftelijke toestemming.</p>
+  </div>
+</div>
+
+<!-- OVER ONS (als aparte pagina) -->
+<div class="legal-section" id="legalAbout">
+  <div class="legal-content">
+    <p class="legal-back" onclick="showHome()">← Terug naar PawSafe</p>
+    <h1>Over PawSafe 🐾</h1>
+    <p class="updated">Belgisch merk · Opgericht 2025</p>
+    <h2>Ons verhaal</h2>
+    <p>PawSafe werd opgericht vanuit een eenvoudige vaststelling: 58% van de Belgische huishoudens heeft een huisdier, maar bijna niemand heeft een noodplan voor hun dier.</p>
+    <p>Bij brand, overstroming of noodverhuizing denk je aan je gezin, je paspoort, je medicatie. Maar je hond? Je kat? Waar is die lijn? Waar is het voerbakje? Is er een ID-kaarthouder?</p>
+    <p>PawSafe lost dat op. Eén tas. Alles erin. Klaar voor het onverwachte.</p>
+    <h2>Onze waarden</h2>
+    <ul>
+      <li>🇧🇪 Belgisch merk — we begrijpen de lokale context</li>
+      <li>💚 Warm, niet alarmerend — voorbereiding brengt rust</li>
+      <li>🔒 Transparant — duidelijke prijzen, eerlijke voorwaarden</li>
+      <li>📦 Snel — besteld vandaag, geleverd binnen 2-4 werkdagen</li>
+    </ul>
+    <h2>Contact</h2>
+    <p>Vragen of opmerkingen? Stuur ons een e-mail via <strong>[JOUW E-MAIL]</strong>. We antwoorden binnen 2 werkdagen.</p>
+  </div>
+</div>
+
+<!-- ORDERBEVESTIGING OVERLAY -->
+<div class="confirmation-overlay" id="confirmationOverlay">
+  <div class="confirmation-box">
+    <span class="conf-icon">🎉</span>
+    <div class="conf-title">Bestelling bevestigd!</div>
+    <p class="conf-text">
+      Bedankt voor je bestelling bij PawSafe.<br>
+      Je ontvangt binnen enkele minuten een bevestigingsmail.<br><br>
+      <strong>Leveringstermijn:</strong> 2–4 werkdagen via bpost/DPD.<br>
+      Je krijgt een e-mail met track-and-trace zodra je pakket onderweg is.
+    </p>
+    <button class="conf-close" onclick="closeConfirmation()">Sluit venster</button>
+  </div>
+</div>
+
+<!-- OPTIN BEVESTIGING -->
+<div class="confirmation-overlay" id="optinOverlay">
+  <div class="confirmation-box">
+    <span class="conf-icon">✉️</span>
+    <div class="conf-title">Checklist onderweg!</div>
+    <p class="conf-text">
+      De gratis checklist "Noodplan voor je hond" wordt zo dadelijk naar je mailbox gestuurd.<br><br>
+      Controleer eventueel je spam-map als je niks ontvangt.
+    </p>
+    <button class="conf-close" onclick="closeOptin()">Sluiten</button>
+  </div>
+</div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+  // ===== STATUS VARIABELEN =====
+  let selectedProduct = 'flagship'; // standaard = evacuatiekit
+  let selectedPayment = 'bancontact';
+
+  const products = {
+    basic: { name: '🧰 Basic Thuiskit', price: '€34,95' },
+    flagship: { name: '🎒 Evacuatiekit 72u', price: '€59,95' }
+  };
+
+  // ===== PRODUCT SELECTIE =====
+  window.selectProduct = function(type) {
+    selectedProduct = type;
+    const p = products[type];
+    document.getElementById('cartItem').innerHTML = `<span>${p.name}</span><span>${p.price}</span>`;
+    document.getElementById('cartTotal').innerHTML = `<span>Totaal incl. BTW</span><span>${p.price}</span>`;
+    // Toon upsell als basic gekozen
+    document.getElementById('upsellRow').style.display = (type === 'basic') ? 'block' : 'none';
+  };
+
+  // ===== BETAALMETHODE =====
+  window.selectPayment = function(el, method) {
+    document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedPayment = method;
+  };
+
+  // ===== BESTELLING PLAATSEN =====
+  window.placeOrder = function() {
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName  = document.getElementById('lastName').value.trim();
+    const email     = document.getElementById('email').value.trim();
+    const street    = document.getElementById('street').value.trim();
+    const zip       = document.getElementById('zip').value.trim();
+    const city      = document.getElementById('city').value.trim();
+    const checkTerms   = document.getElementById('checkTerms').checked;
+    const checkPrivacy = document.getElementById('checkPrivacy').checked;
+
+    if (!firstName || !lastName || !email || !street || !zip || !city) {
+      alert('Vul alle verplichte velden in (gemarkeerd met *).');
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert('Voer een geldig e-mailadres in.');
+      return;
+    }
+    if (!checkTerms || !checkPrivacy) {
+      alert('Ga akkoord met de algemene voorwaarden en het privacybeleid om verder te gaan.');
+      return;
+    }
+
+    // ===== BREVO — ORDERBEVESTIGING =====
+    // Stap 1: voeg de klant toe aan je Brevo-contactenlijst (lijst ID voor bestaande klanten)
+    // Stap 2: stuur een transactionele e-mail via een Brevo template
+    //
+    // ⚠️  VEREISTE INSTELLINGEN (vul dit in voordat je live gaat):
+    //     BREVO_API_KEY  → jouw Brevo API-sleutel  (Brevo > Instellingen > API-sleutels)
+    //     ORDER_TEMPLATE_ID → ID van jouw orderbevestiging-e-mailtemplate in Brevo
+    //     CUSTOMERS_LIST_ID → ID van de lijst "Klanten" in Brevo
+    //
+    const BREVO_API_KEY       = 'VERVANG_MET_JOUW_BREVO_API_KEY';
+    const ORDER_TEMPLATE_ID   = 1;   // vervang met jouw template-ID
+    const CUSTOMERS_LIST_ID   = 2;   // vervang met jouw lijst-ID voor klanten
+
+    const orderData = {
+      voornaam:   document.getElementById('firstName').value.trim(),
+      achternaam: document.getElementById('lastName').value.trim(),
+      email:      document.getElementById('email').value.trim(),
+      straat:     document.getElementById('street').value.trim(),
+      postcode:   document.getElementById('zip').value.trim(),
+      gemeente:   document.getElementById('city').value.trim(),
+      product:    products[selectedProduct].name,
+      prijs:      products[selectedProduct].price,
+      betaling:   selectedPayment
+    };
+
+    // --- Contact toevoegen aan Brevo (klantlijst) ---
+    fetch('https://api.brevo.com/v3/contacts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': BREVO_API_KEY
+      },
+      body: JSON.stringify({
+        email:      orderData.email,
+        firstName:  orderData.voornaam,
+        lastName:   orderData.achternaam,
+        listIds:    [CUSTOMERS_LIST_ID],
+        updateEnabled: true,
+        attributes: {
+          FIRSTNAME:  orderData.voornaam,
+          LASTNAME:   orderData.achternaam,
+          ADRES:      orderData.straat + ', ' + orderData.postcode + ' ' + orderData.gemeente,
+          PRODUCT:    orderData.product,
+          BEDRAG:     orderData.prijs
+        }
+      })
+    }).catch(err => console.warn('Brevo contact fout:', err));
+
+    // --- Orderbevestigingsmail sturen via Brevo template ---
+    fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': BREVO_API_KEY
+      },
+      body: JSON.stringify({
+        templateId: ORDER_TEMPLATE_ID,
+        to: [{ email: orderData.email, name: orderData.voornaam + ' ' + orderData.achternaam }],
+        params: {
+          VOORNAAM:   orderData.voornaam,
+          PRODUCT:    orderData.product,
+          BEDRAG:     orderData.prijs,
+          ADRES:      orderData.straat + ', ' + orderData.postcode + ' ' + orderData.gemeente,
+          BETALING:   orderData.betaling
+        }
+      })
+    }).catch(err => console.warn('Brevo e-mail fout:', err));
+
+    // Toon bevestigingsoverlay (ongeacht API-resultaat — Mollie regelt echte betaalstatus)
+    document.getElementById('confirmationOverlay').classList.add('open');
+  };
+
+  window.closeConfirmation = function() {
+    document.getElementById('confirmationOverlay').classList.remove('open');
+    // Reset formulier
+    document.getElementById('firstName').value = '';
+    document.getElementById('lastName').value  = '';
+    document.getElementById('email').value     = '';
+    document.getElementById('street').value    = '';
+    document.getElementById('zip').value       = '';
+    document.getElementById('city').value      = '';
+    document.getElementById('checkTerms').checked   = false;
+    document.getElementById('checkPrivacy').checked = false;
+  };
+
+  // ===== BREVO — E-MAIL OPTIN (gratis checklist) =====
+  window.submitOptin = function() {
+    const email = document.getElementById('optinEmail').value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert('Voer een geldig e-mailadres in.');
+      return;
+    }
+
+    // ⚠️  VEREISTE INSTELLINGEN:
+    //     CHECKLIST_LIST_ID   → ID van je "Nieuwsbrief" lijst in Brevo
+    //     WELCOME_TEMPLATE_ID → ID van je welkomstmail-template in Brevo
+    //
+    const BREVO_API_KEY_OPTIN   = 'VERVANG_MET_JOUW_BREVO_API_KEY';
+    const CHECKLIST_LIST_ID     = 3;   // vervang met jouw lijst-ID voor nieuwsbrief
+    const WELCOME_TEMPLATE_ID   = 2;   // vervang met jouw welkomstmail-template-ID
+
+    // --- Contact toevoegen aan Brevo (nieuwsbrieflijst) ---
+    fetch('https://api.brevo.com/v3/contacts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': BREVO_API_KEY_OPTIN
+      },
+      body: JSON.stringify({
+        email:       email,
+        listIds:     [CHECKLIST_LIST_ID],
+        updateEnabled: true
+      })
+    }).catch(err => console.warn('Brevo optin fout:', err));
+
+    // --- Welkomstmail met checklist sturen ---
+    fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': BREVO_API_KEY_OPTIN
+      },
+      body: JSON.stringify({
+        templateId: WELCOME_TEMPLATE_ID,
+        to: [{ email: email }]
+      })
+    }).catch(err => console.warn('Brevo welkomstmail fout:', err));
+
+    document.getElementById('optinEmail').value = '';
+    document.getElementById('optinOverlay').classList.add('open');
+  };
+
+  window.closeOptin = function() {
+    document.getElementById('optinOverlay').classList.remove('open');
+  };
+
+  // ===== NAVIGATIE =====
+  window.scrollToSection = function(id) {
+    showHome();
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  };
+
+  window.toggleMenu = function() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  };
+  window.closeMenu = function() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  };
+
+  // ===== FAQ =====
+  window.toggleFaq = function(btn) {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  };
+
+  // ===== LEGALE PAGINA'S =====
+  window.showLegal = function(page) {
+    document.getElementById('mainSite').style.display = 'none';
+    document.querySelectorAll('.legal-section').forEach(s => s.classList.remove('active'));
+    const map = {
+      privacy:    'legalPrivacy',
+      terms:      'legalTerms',
+      withdrawal: 'legalWithdrawal',
+      impressum:  'legalImpressum',
+      about:      'legalAbout'
+    };
+    const id = map[page];
+    if (id) {
+      document.getElementById(id).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  window.showHome = function() {
+    document.querySelectorAll('.legal-section').forEach(s => s.classList.remove('active'));
+    document.getElementById('mainSite').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // ===== COOKIE BANNER =====
+  window.closeCookies = function(accepted) {
+    localStorage.setItem('pawsafe_cookies', accepted ? 'accepted' : 'refused');
+    document.getElementById('cookieBanner').classList.add('hidden');
+  };
+
+  // Controleer of cookies al beantwoord zijn
+  if (localStorage.getItem('pawsafe_cookies')) {
+    document.getElementById('cookieBanner').classList.add('hidden');
+  }
+</script>
+
+</body>
+</html>
