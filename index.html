@@ -1386,75 +1386,25 @@
       return;
     }
 
-    // ===== BREVO — ORDERBEVESTIGING =====
-    // Stap 1: voeg de klant toe aan je Brevo-contactenlijst (lijst ID voor bestaande klanten)
-    // Stap 2: stuur een transactionele e-mail via een Brevo template
-    //
-    // ⚠️  VEREISTE INSTELLINGEN (vul dit in voordat je live gaat):
-    //     BREVO_API_KEY  → jouw Brevo API-sleutel  (Brevo > Instellingen > API-sleutels)
-    //     ORDER_TEMPLATE_ID → ID van jouw orderbevestiging-e-mailtemplate in Brevo
-    //     CUSTOMERS_LIST_ID → ID van de lijst "Klanten" in Brevo
-    //
-    const BREVO_API_KEY       = 'VERVANG_MET_JOUW_BREVO_API_KEY';
-    const ORDER_TEMPLATE_ID   = 1;   // vervang met jouw template-ID
-    const CUSTOMERS_LIST_ID   = 2;   // vervang met jouw lijst-ID voor klanten
-
+    // ===== BREVO — ORDERBEVESTIGING (via veilige Vercel API) =====
     const orderData = {
       voornaam:   document.getElementById('firstName').value.trim(),
       achternaam: document.getElementById('lastName').value.trim(),
       email:      document.getElementById('email').value.trim(),
-      straat:     document.getElementById('street').value.trim(),
-      postcode:   document.getElementById('zip').value.trim(),
-      gemeente:   document.getElementById('city').value.trim(),
+      adres:      document.getElementById('street').value.trim() + ', ' +
+                  document.getElementById('zip').value.trim() + ' ' +
+                  document.getElementById('city').value.trim(),
       product:    products[selectedProduct].name,
       prijs:      products[selectedProduct].price,
       betaling:   selectedPayment
     };
 
-    // --- Contact toevoegen aan Brevo (klantlijst) ---
-    fetch('https://api.brevo.com/v3/contacts', {
+    fetch('/api/brevo-order', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'api-key': BREVO_API_KEY
-      },
-      body: JSON.stringify({
-        email:      orderData.email,
-        firstName:  orderData.voornaam,
-        lastName:   orderData.achternaam,
-        listIds:    [CUSTOMERS_LIST_ID],
-        updateEnabled: true,
-        attributes: {
-          FIRSTNAME:  orderData.voornaam,
-          LASTNAME:   orderData.achternaam,
-          ADRES:      orderData.straat + ', ' + orderData.postcode + ' ' + orderData.gemeente,
-          PRODUCT:    orderData.product,
-          BEDRAG:     orderData.prijs
-        }
-      })
-    }).catch(err => console.warn('Brevo contact fout:', err));
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(orderData)
+    }).catch(err => console.warn('Order API fout:', err));
 
-    // --- Orderbevestigingsmail sturen via Brevo template ---
-    fetch('https://api.brevo.com/v3/smtp/email', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'api-key': BREVO_API_KEY
-      },
-      body: JSON.stringify({
-        templateId: ORDER_TEMPLATE_ID,
-        to: [{ email: orderData.email, name: orderData.voornaam + ' ' + orderData.achternaam }],
-        params: {
-          VOORNAAM:   orderData.voornaam,
-          PRODUCT:    orderData.product,
-          BEDRAG:     orderData.prijs,
-          ADRES:      orderData.straat + ', ' + orderData.postcode + ' ' + orderData.gemeente,
-          BETALING:   orderData.betaling
-        }
-      })
-    }).catch(err => console.warn('Brevo e-mail fout:', err));
-
-    // Toon bevestigingsoverlay (ongeacht API-resultaat — Mollie regelt echte betaalstatus)
     document.getElementById('confirmationOverlay').classList.add('open');
   };
 
@@ -1480,40 +1430,12 @@
       return;
     }
 
-    // ⚠️  VEREISTE INSTELLINGEN:
-    //     CHECKLIST_LIST_ID   → ID van je "Nieuwsbrief" lijst in Brevo
-    //     WELCOME_TEMPLATE_ID → ID van je welkomstmail-template in Brevo
-    //
-    const BREVO_API_KEY_OPTIN   = 'VERVANG_MET_JOUW_BREVO_API_KEY';
-    const CHECKLIST_LIST_ID     = 3;   // vervang met jouw lijst-ID voor nieuwsbrief
-    const WELCOME_TEMPLATE_ID   = 2;   // vervang met jouw welkomstmail-template-ID
-
-    // --- Contact toevoegen aan Brevo (nieuwsbrieflijst) ---
-    fetch('https://api.brevo.com/v3/contacts', {
+    // ===== BREVO — OPTIN (via veilige Vercel API) =====
+    fetch('/api/brevo-optin', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'api-key': BREVO_API_KEY_OPTIN
-      },
-      body: JSON.stringify({
-        email:       email,
-        listIds:     [CHECKLIST_LIST_ID],
-        updateEnabled: true
-      })
-    }).catch(err => console.warn('Brevo optin fout:', err));
-
-    // --- Welkomstmail met checklist sturen ---
-    fetch('https://api.brevo.com/v3/smtp/email', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'api-key': BREVO_API_KEY_OPTIN
-      },
-      body: JSON.stringify({
-        templateId: WELCOME_TEMPLATE_ID,
-        to: [{ email: email }]
-      })
-    }).catch(err => console.warn('Brevo welkomstmail fout:', err));
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    }).catch(err => console.warn('Optin API fout:', err));
 
     document.getElementById('optinEmail').value = '';
     document.getElementById('optinOverlay').classList.add('open');
